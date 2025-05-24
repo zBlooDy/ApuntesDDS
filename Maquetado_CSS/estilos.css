@@ -1,0 +1,185 @@
+:root {
+    --color-principal: #25c19f;
+    --color-secundario: #54c7ec;
+    --negro: #2b3137;
+    --gris: #f5f6f7;
+    --gris-oscuro: #606770;
+
+    --gradiente: linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+    --sombra: 0 1px 2px 0 #0000001a;
+
+}
+
+/* 
+    Root me define variables globales para usarlas en todo el archivo
+*/
+
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 24px;
+    box-shadow: var(--sombra)
+
+}
+
+#hero {
+    background-color: var(--negro);
+}
+
+section {
+    padding: 24px;
+}
+
+h1 {
+    color: white;
+    font-size: 4rem;
+    justify-content: center;
+    
+    span {
+        color: var(--color-principal);
+    }
+}
+
+.boton {
+    background-color: var(--color-principal);
+    color: var(--negro);
+    border-radius: 8px;
+    padding: 10px 32px;
+    text-decoration: none;
+}
+
+.boton.secundario {
+    background-color: var(--color-secundario);
+}
+
+.ctas {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+#banner {
+    display: flex;
+    justify-content: center;
+}
+
+#banner p {
+    font-size: 3rem;
+    background: var(--gradiente);
+    font-weight: bold;
+    background-clip: text;
+    color: transparent;
+    margin: 0;
+
+    &::before {
+        content: " 🎉 ";
+        color: initial;
+    }
+
+    &::after {
+        content: " 🥳 ";
+        color: initial;
+    }
+}
+
+#features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 300px;
+}
+
+.feature {
+    width: 300px;
+    text-align: center;
+    line-height: 1.5;
+
+    img {
+        width: 250px;
+    }
+
+}
+
+h3 {
+    text-align: center;
+}
+
+.iframe-container {
+    display: flex;
+    justify-content: center;
+}
+
+#social-proof {
+    color: var(--gris-oscuro);
+}
+
+.card {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+    padding: 16px;
+}
+
+.card header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+
+    h4 {
+        margin: 0;
+    }
+}
+
+.arroba {
+    color: var(--gris-oscuro);
+    margin: 0;
+}
+
+.avatar {
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+}
+
+/* 8px (arriba y abajo) 24px (a la derecha y izquierda) 
+primer valor arriba
+segundo valor derecha
+tercer valor abajo
+cuarto valor izq
+*/
+ul {
+    display: flex;
+    gap: 26px;
+    padding: 0;
+    list-style-type: none;
+    margin-right: auto;
+    text-decoration: none;
+    
+}
+
+/* Reglas para mobile */
+
+@media (max-width: 768px) {
+    nav select 
+    nav input {
+        display: none;
+    }
+
+    .tweets {
+        flex-wrap: wrap;
+    }
+
+    .links {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 16px;
+    }
+}
