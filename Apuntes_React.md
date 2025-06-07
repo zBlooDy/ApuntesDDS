@@ -87,3 +87,40 @@ const ProductDetailPage = () => {
     }
 
 ```
+
+### Arbol de renderizado
+
+    - Concepto de componente padre e hijo
+    - Arbol de renderizado, constituido por los componentes renderizados
+    - Cada componente padre va renderizando a sus componentes hijos
+
+**Renderizado condicional**: Poder o no mostrar componentes HTML segun diferentes condiciones. Se puede renderizar JSX de forma _condicional_ utilizando sintaxis de JS (if, &&, ? : .)
+![Renderizado condicional](image-6.png)
+
+    - &&: Renderiza cuando una condiciones es verdadera, o no renderizar nada en caso contrario
+
+### Hooks
+
+Una funcion de JavaScript que permite usar caracteristicas de React (manejo del estado y el ciclo de vida)
+
+    - Solo se pueden llamar dentro de componentes funcionales
+    - Usar en nivel superior de un componente (no dentro de condicionales, bucles ni funciones anidadas)
+    - No pueden ser condicionales
+
+Si hay una logica con estado que se utiliza en varios componentes, se puede crear un propio Hook.
+
+#### Hooks - Tipos
+
+    - Estado: Permiten que un componente "recuerde" la informacion, como la entrada del usuario. (useState o useReducer)
+    - Efecto: Permite realizar efectos secundarios en los componentes, como obtener datos, actualizar DOM y temporizadores (useEffect)
+    - Referencia: Manejar referencias para que un componente contenga
+    - Contexto: Para que un componente reciba informacion de componentes principales sin pasarlas como props. (useContext)
+    - Performance: Optimizar el renderizando omitiendo el trabajo innecesario (useMemo o useCallback)
+
+🚨 Recordemos que cada componente maneja su propio estado, y si alguien mas lo quiere hacer que sea mandandole una funcion
+![Ejemplo](image-7.png)
+
+```jsx
+        value={"Hola"}  //El valor viene de lo que haya buscado en la navbar
+        onChange={(e) => {setText(e.target.value)}} //Recibe evento y definis que tenes que hacer
+```
