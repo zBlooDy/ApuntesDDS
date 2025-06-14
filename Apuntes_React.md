@@ -124,3 +124,50 @@ Si hay una logica con estado que se utiliza en varios componentes, se puede crea
         value={"Hola"}  //El valor viene de lo que haya buscado en la navbar
         onChange={(e) => {setText(e.target.value)}} //Recibe evento y definis que tenes que hacer
 ```
+
+## Integracion Frontend - Backend
+
+- Las llamadas se podrian implementar en archivos services o api
+
+- Se pueden mockear las requests
+
+  - Archivos .json locales (fetch('/mock/users.json'))
+  - Bibliotecas de mock (msw por ejemplo)
+
+- El usuario siempre necesita saber que esta pasando, es decir, cuando este cargando algo usar Spinners, Skeletons, etc.
+
+### Axios
+
+    - Cliente HTTP basado en Promises
+    - Hace XMLHttpRequests desde el navegador
+    - Hace peticiones HTTP desde node.js
+    - Intercepta requests y responses
+
+```jsx
+//productosService.js
+
+export async function obtenerProducots() {
+  try {
+    const response = await axios.get("http://localhost:8000/api/productos");
+    return response.data; // Axios ya transforma el json
+  } catch (e) {}
+}
+```
+
+#### Alternativa a pasar props
+
+El contexto permite que el padre provea datos al arbol entero debajo de el, sin utilizar props.
+
+    - Crear un contexto
+    - Proveerlo desde el componente que especifica los datos
+    - Usar ese contexto desde el componente que necesita esos datos
+
+```jsx
+import { createContext } from "react";
+
+export const LevelContext = createContexto({}); //Estado inicial: Puede tener variables de estado o funciones
+
+// Hay que crear un LevelContextoProvider
+```
+
+![Create_Context](image-8.png)

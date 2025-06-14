@@ -49,6 +49,7 @@ export function ComparadorClicks() {
   // Ganador va a ser un string que sea "izquierda", "derecha", "empate"
   const ganador = calcularGanador(clicksIzquierda, clicksDerecha);
 
+  // Nos permite lidiar con los efectos que se realizan por afuera de React
   useEffect(() => {
     notificarCambioGanador();
   }, [ganador]);
