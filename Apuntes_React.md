@@ -171,3 +171,19 @@ export const LevelContext = createContexto({}); //Estado inicial: Puede tener va
 ```
 
 ![Create_Context](image-8.png)
+
+## Custom Hooks
+
+- Nos sirven para un proposito mas especifico de los que ofrece React
+- Permiten abstraer logica
+- El codigo de los componentes pasa a expresar intencion y no implementacion
+
+Cada llamada a hook es completamente independiente
+
+## CSS in JS
+
+🏴 Un patron donde el CSS se compone usando Javascript en lugar de definirlo en otro archivo .css. No forma parte de React sino que se usa una biblioteca
+
+"emotion/react" una biblioteca para escribir estilos CSS con JavaScript. Se puede usar independiente del framework o con React
+
+"styled-components" componentes que se le inyectan su estilos de forma automatica.
