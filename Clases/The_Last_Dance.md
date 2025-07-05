@@ -1,8 +1,8 @@
-# Despliegue
+# (💻) Despliegue
 
-> Al estar trabajando en local, otra persona no se puede conectar ya que no se conoce la IP en donde esta el proyecto. Estas ip's cambian dinamicamente y son privadas.
+> 💭 Al estar trabajando en local, otra persona no se puede conectar ya que no se conoce la IP en donde esta el proyecto. Estas ip's cambian dinamicamente y son privadas.
 
-Ante esta situacion, colocamos nuestro software en una computadora "dedicada".
+-> Ante esta situacion, colocamos nuestro software en una computadora "dedicada".
 
 Ejemplo ataque seguridad de un script - Linux: Nivel sistema operativo, osea entro a esa computadora fisicamente y ahi ejecuto - Javascript: Nivel software que desarrolle
 
@@ -16,33 +16,39 @@ Ejemplo ataque seguridad de un script - Linux: Nivel sistema operativo, osea ent
 
 Cosas minimas para desplegar: Memoria | Disco | Procesamiento | SO
 
-## Virtualizacion
+## (🌐) Virtualizacion
 
-Crear un contexto con ciertos detalles (memoria, disco, procesamiento, sist operativo) y pensar que nuestro software va a correr en esta "cajita virtualizada".
+-> Crear un contexto con ciertos detalles (memoria, disco, procesamiento, sist operativo) y pensar que nuestro software va a correr en esta "cajita virtualizada".
 
-Nos permite independizarnos de software y hardware que el nodo real tiene.
+-> Nos permite independizarnos de software y hardware que el nodo real tiene.
 
-### Docker
+### (🐳) Docker
 
-Virtualiza a nivel sistema operativo (de tipo Linux). Ejecuta nativamente un proceso pero de una forma modificada, lo que lo hace mas eficiente.
+Herramienta de virtualizacion de software.  
+Virtualiza a nivel sistema operativo **(de tipo Linux)**. Ejecuta nativamente un proceso pero de una forma modificada, lo que lo hace mas eficiente.
+Solo ejecuta en Linux.
 
 ### Como funciona Docker?
 
 > Entorno de imagenes y contenedores...
 
-**Imagenes**: Descripciones de un sistema operativo virtualizado. Por cada imagen puedo crear n contenedores.
-Son estaticas.
-Se basan en "layers" imagenes mas pequenias que van construyendo a la imagen final (idea de commits en git). Esto permite hacer mas eficiente las descargas y construccion.
-Tienen tags/etiquetas en vez de nombres.
+❓ Que dice un Dockerfile:
 
-Que dice una imagen:
+Dockerfile nos dice como se va a construir el archivo docker
 
 - Capa anterior a la imagen
 - WORKDIR: Todos los path son relativos a ese directorio
 - COPY archivos
 - ENTRYPOINT: Que es lo que se ejecuta de primera instancia en el sistema, si no esta especificado.
 
-**Contenedores (VM):** Estrategia de virtualizacion liviana, es una instancia que no representa una computadora sino un proceso.
+---
+
+**[🎨] Imagenes**: Descripciones de un sistema operativo virtualizado. Por cada imagen puedo crear n contenedores.
+Son estaticas.
+Se basan en "layers" imagenes mas pequenias que van construyendo a la imagen final (idea de commits en git). Esto permite hacer mas eficiente las descargas y construccion.
+Tienen tags/etiquetas en vez de nombres. (docker build -t hola-mundo .)
+
+**[📦] Contenedores (VM):** Estrategia de virtualizacion liviana, es una instancia que no representa una computadora sino un proceso.
 Nace -> Ejecuta -> Finaliza
 
 Analogia(Imagen: clase | Contenedor: objeto instancia de esa clase)
@@ -55,27 +61,31 @@ Dockerfile ---> Imagen ---> [Contenedor [proceso] ]
             |  |Proceso||
             |__________ |
 
-Operaciones sobre imagenes
+[🔩] Operaciones sobre imagenes
 
     - Descargar (pull)
         - Entorno de ejecucion: Alpine/Debine/Node/Python
         - Servicios: Mongo/Keycloak
 
     - Construir (build)
-        - Se pueden construir en base a alguna imagen especifica y realizar cambios
+        - Se pueden construir en base a alguna imagen especifica y realizar cambios (docker build . => Busca el dockerfile en el directorio y construye las capas de la imagen)
 
     - Compartir (push)
 
-Operaciones sobre contenedores
+[🔩] Operaciones sobre contenedores
 
     - Ejecutar (run): A partir de una imagen
     - Conectarse al contenedor (exec): Entrar y ver como esta el proceso, mandarle mensajes, ver su salida standard
     - Operaciones como inicio/detencion/reinicio/fin
     - Eliminar: Detenerlo y destruir todo detalle del contenedor en el SO
+    - (-net host: Levanta en la misma red que estoy yo
+    -p puertoMiMaquina:puertoContenedor)
 
-Registros : Para descargar/subir imagenes dockers
+**Registros** : Para descargar/subir imagenes dockers
 
 Procesos demons/larga vida, conviene levantar el servidor en -d (dettached/demon) lo que hace es iniciar el proceso y dejarlo en segundo plano
+
+**Docker compose:** Permite ejecutar mediante el comando `docker compose` todos los detalles que ponia en la terminal, ports, environment, volumes, imagen, etc.
 
 ---
 
